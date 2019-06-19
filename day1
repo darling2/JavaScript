@@ -5,7 +5,7 @@ let x ="otder x ";
 	let y = "inner y";
 	console.log(x);  //inner x 
 	console.log(y);  //inner y
-	//console.log(d);
+	//console.log(d);  // 호이스팅 불가, 에러
 	let d = "inner ddddddddd";
 }
 
