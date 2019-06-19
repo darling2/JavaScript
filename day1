@@ -1,0 +1,15 @@
+const 선언자
+	<script type="text/javascript">
+		
+		const x ="otder x ";
+		console.log(x);
+
+		//x= "dddddd";
+
+		const list = {"k1" : "첫번째 데이터 " , "k2" : "두번째 데이터"};
+
+		console.log(list);
+		list.k1 = "세번째 데이터"
+		console.log(list);
+
+	</script>
