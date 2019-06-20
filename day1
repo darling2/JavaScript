@@ -1,5 +1,17 @@
 ●
-<h1>＊ let 선언자</h1>
+● placeholder
+
+	<input type="text" value="123" /> // 6월 21일
+	
+	<script type="text/javascript">
+		var k = document.getElementsByTagName('input')[0];
+		var now = new Date();
+		k.value=`${now.getMonth()+1}월 ${now.getDate()}일`;
+	</script>
+	
+	
+
+● let 선언자
 let x ="otder x ";
 {
 	let x = "inner x";
@@ -13,7 +25,7 @@ let x ="otder x ";
 console.log(x);  //otder x
 
 
-＊ const 선언자
+● const 선언자
 	<script type="text/javascript">
 		
 		const x ="otder x ";
