@@ -40,3 +40,14 @@ console.log(x);  //otder x
 		console.log(list);
 
 	</script>
+
+
+● 객체 생성 
+	 생성자 사용
+	function aa (a,b){
+			this.aa = a;
+			this.bb = b;
+		}
+		var card = new aa("하트","A");
+
+		console.log(card);  //aa {aa: "하트", bb: "A"}
