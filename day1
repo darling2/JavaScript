@@ -190,3 +190,43 @@ console.log(now2.getFullYear() +"/"+ now2.getMonth() +"/"+ now2.getDate()) //201
 		console.log(j);
 
 ● 문자열 제어
++ 연산자는 피연산자가 모두 문자열이면 문자열로 연결
+피연산자 중 하나가 문자열 또는 문자열로 변환할 수 있는 객체라면 다른 피연산자의 타입을 문자열로 바꾼 다음 연결.
+
+ex) 
+"hello" + "world"  //helloworld
+"1" + "2"  //12
+10+"title"  // 10title
+
+
+	1) 래핑 (wrapping)
+	- 원시의 값을 객체로 변환하는 행위
+	var msg = new String ("hello world!")
+	console.log(msg);  //String {"hello world!"}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	var msg = new String ("hello javascript!")
+var txt = "javascript! 공부하자"
+
+console.log(msg.codePointAt(1));  //e를 10진수로 -> 101
+console.log(msg.charAt(6));  //대상 문자열의 n번째  -> j
+console.log(endsWith.txt("공부"));
+
+
+if(endsWith.txt("공부")){
+	console.log("공부있다");
+}else{
+	console.log("공부없어요");
+}
+
+https://stackoverflow.com/questions/18768344/javascript-endswith-function-not-working
+	
+	
