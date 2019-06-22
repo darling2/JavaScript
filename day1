@@ -155,9 +155,38 @@ console.log(now2.getFullYear() +"/"+ now2.getMonth() +"/"+ now2.getDate()) //201
 		console.log(++a);  //11
 		console.log(a)//11
 		------------------------------------------------------------------
-
+		var a =10;
+		var b =++a;
+		var c= a++ +2; //a에 2를 더한 후 마지막에 ++ 1을 더한다.
 		
+		console.log(b); //11
+		console.log(c); //13
+		------------------------------------------------------------------
+
+
+		* 산술 대입 연산자
+		+=  a+=b  a=a+b
+		-=  a-=b  a=a-b
+		*=  a*=b  a=a*b
+		/=  a/=b  a=a/b
+		%=  a%b   a=a%b
+		
+		var a =10;
+		var b =20;
+
+		a+=b // a=a+b
+		console.log(a);
 	
+		ex)
+		var k =5;
+		var j =0;
+		function add(){
+			for(var i=0;i<k; i++){
+				j+=i;
+			}
+		}
 
+		add();
+		console.log(j);
 
-
+● 문자열 제어
