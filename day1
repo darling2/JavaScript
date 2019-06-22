@@ -51,3 +51,15 @@ console.log(x);  //otder x
 		var card = new aa("하트","A");
 
 		console.log(card);  //aa {aa: "하트", bb: "A"}
+		
+		
+
+● Date 생성자
+var now = new Date();
+console.log(now); //Sat Jun 22 2019 14:00:30 GMT+0900 (한국 표준시)
+
+var now2 = new Date(2019,10,10);
+console.log(now2);  //Sun Nov 10 2019 00:00:00 GMT+0900 (한국 표준시)
+console.log(now2.getFullYear() +"/"+ now2.getMonth() +"/"+ now2.getDate()) //2019/10/10
+
+
