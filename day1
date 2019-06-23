@@ -252,4 +252,29 @@ console.log(msg);  //String {"hello world!"}
 	console.log(msg);  //String {"hello javascript!"}
 	console.log(msg.toString());  //hello javascript!
 	
-	
+	9. 문자열을 배열로 읽기
+	var txt = "javascript! 공부하자"
+	console.log("문자열을 배열형태로 읽기" + txt[5]); //c
+	console.log(txt[5] = "kkkk");  //5번째문자를 kkkk로 변경해도 변경되지 않는다.
+	console.log(txt);  //javascript! 공부하자
+
+
+
+● 논리 연산자와 관계 연산자
+
+1) 관계 연산자 
+- 두 개의 피연산자를 비교한 결과를 논리값(true,false)로 반환.
+- 주로 if/else , while , do/while, for문에서 사용
+
+
+
+
+
+
+
+
+
+
+
+
+
