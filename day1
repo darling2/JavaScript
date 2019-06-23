@@ -329,7 +329,7 @@ if( c.length > 2 && ( a>0 || b>0 )) {  //false
 0을 제외한 숫자, 빈문자열을 제외한 문자열, 모든 객체, 심벌 -> true
 
 
-* 논리곱 연산자와 논리합 연산자의 단락 평가
+* 논리곱 연산자(&&)와 논리합 연산자(||)의 단락 평가
 a && b 
 a를 평가한 값이 false면 b의 값에 관계없이 표현식 자체가 false, b의 값을 평가하지 않는다.
 이때! && 연산자는 false대신에 a의 값 자체를 반환.
@@ -337,13 +337,40 @@ a를 평가한 값이 false면 b의 값에 관계없이 표현식 자체가 fals
 true , false 대신에 값자체를 반환
 
 논리값이 필요한 장소에서는 논리값으로 타입이 변환되어 논리식 자체는 정상 동작!
+	
+	1) 논리곱 연산자(&&)
+	ex)
+	var p = null;
+	console.log(p && p.name);  // null  true false가 아닌 첫번째 비교했던 false값이 나온다.
 
-ex)
-var p = null;
-console.log(p && p.name);  // null  true false가 아닌 첫번째 비교했던 false값이 나온다.
+	p ={name:"홍달링",age:7};
+	console.log(p && p.name);  //홍달링  true이면 우측값이 나온다.
 
-p ={name:"홍달링",age:7};
-console.log(p && p.name);  //홍달링  true이면 우측값이 나온다.
+
+	2) 논리합 연산자(||)
+	var p = null;
+	console.log(p || false);  //false   값이 모두 false이면 마지막 값을 반환
+
+	p ={name:"홍달링",age:7};
+	console.log(p || p.name);  //{name: "홍달링", age: 7} true면 그 값 자체를 반환
+
+	ex) 초기값 설정
+	function setting(x){  //파라미터가 없을경우 undefined로 들어간다. 
+		x = x || 500;
+		return x;
+	}
+
+	console.log(setting());  //빈값을 넣어주면 500으로 초기값 세팅
+	console.log(setting(200 ));  //200 으로 세팅
+
+
+
+
+
+
+
+
+
 
 
 
