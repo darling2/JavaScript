@@ -1,4 +1,4 @@
-●
+<h1>asdfsadfsadf</h1>
 ● placeholder
 
 	<input type="text" value="123" /> // 6월 21일
@@ -266,9 +266,17 @@ console.log(msg);  //String {"hello world!"}
 - 두 개의 피연산자를 비교한 결과를 논리값(true,false)로 반환.
 - 주로 if/else , while , do/while, for문에서 사용
 
-
-
-
+연산자
+==          값이 같음     a==b      a값과 b값이 같으면 true, 그 외 false
+!=          값이 다름     a!=b      a값과 b값이 다르면 true, 그 외 false
+===        값과타입이같음    a===b      a값과 b값과 타입이 같으면 true, 그 외 false
+!==        값과타입이다름    a!==b      a값과 b값과 타입이 다르면 true, 그 외 false
+<         값이 같음     a==b      a값과 b값이 같으면 true, 그 외 false
+==          값이 같음     a==b      a값과 b값이 같으면 true, 그 외 false
+==          값이 같음     a==b      a값과 b값이 같으면 true, 그 외 false
+==          값이 같음     a==b      a값과 b값이 같으면 true, 그 외 false
+==          값이 같음     a==b      a값과 b값이 같으면 true, 그 외 false
+==          값이 같음     a==b      a값과 b값이 같으면 true, 그 외 false
 
 
 
