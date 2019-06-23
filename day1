@@ -354,7 +354,7 @@ true , false 대신에 값자체를 반환
 	p ={name:"홍달링",age:7};
 	console.log(p || p.name);  //{name: "홍달링", age: 7} true면 그 값 자체를 반환
 
-	ex) 초기값 설정
+	ex) 초기값 설정 (시간을 맞춰야하는 함수? setTime을 걸어야 하는 이벤트일 경우? 사용..)
 	function setting(x){  //파라미터가 없을경우 undefined로 들어간다. 
 		x = x || 500;
 		return x;
@@ -365,9 +365,19 @@ true , false 대신에 값자체를 반환
 
 
 
+3) 조건 연산자
 
-
-
+	1. 삼항연산자
+	var a =11;
+	var result = (a%2==0) ? "짝수" : "홀수" ;  //true면  짝수, false면 홀수
+	console.log(result);
+	
+	- 위 소스를 if/else로 쓰면
+	if(a%2 ==0){
+		console.log("짝수");
+	}else{
+		console.log("홀수");
+	}
 
 
 
