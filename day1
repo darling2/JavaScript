@@ -210,23 +210,46 @@ console.log(msg);  //String {"hello world!"}
 	var msg = new String ("hello javascript!")
 	var txt = "javascript! 공부하자"
 
-	1. codePointAt
+	1. codePointAt(n)
 	console.log(msg.codePointAt(1));  //e를 10진수로 -> 101
 
-	2. charAt
+	2. charAt(n)
 	console.log(msg.charAt(6));  //대상 문자열의 n번째  -> j
 
-	3.endsWith
+	3.endsWith(s[,n])
 	console.log(txt.endsWith("공부하자"));  //true 마지막 문자열 판별
 
 	if(txt.endsWith("공부하자")){
 		console.log("끝단어를 찾아요 -> 공부하자");
 	}
 	
-	4. includes
+	4. includes(s[,n])
 	console.log(txt.includes("script",4));  //true 4번째 순서부터 script라는 단어가 포함하는지
 
 
+	5. match(r)  -> 값이 일치하는지 여부 체크
+	if (! location.href.match('/day1')) {
+	  alert('English page!');
+	}
+	else {
+	  alert('Korean page!');
+	}
 	
+	
+	6. repeat(n)  -> n만큼 반복한다.
+	- 음수이거나, Infinity  이면 에러가 난다.
+	
+	<div id="aaa"></div>  //javaScript 마스터javaScript 마스터
+	function repeat1(){
+		var str = "javaScript 마스터";
+		var result =str.repeat(2);
+		aaa.innerHTML = result;
+	}
+
+	repeat1();
+	
+	8. toString -> 객체를 스트링 형태로
+	console.log(msg);  //String {"hello javascript!"}
+	console.log(msg.toString());  //hello javascript!
 	
 	
