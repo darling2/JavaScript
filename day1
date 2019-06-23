@@ -271,15 +271,79 @@ console.log(msg);  //String {"hello world!"}
 !=          값이 다름     a!=b      a값과 b값이 다르면 true, 그 외 false
 ===        값과타입이같음    a===b      a값과 b값과 타입이 같으면 true, 그 외 false
 !==        값과타입이다름    a!==b      a값과 b값과 타입이 다르면 true, 그 외 false
-<         값이 같음     a==b      a값과 b값이 같으면 true, 그 외 false
-==          값이 같음     a==b      a값과 b값이 같으면 true, 그 외 false
-==          값이 같음     a==b      a값과 b값이 같으면 true, 그 외 false
-==          값이 같음     a==b      a값과 b값이 같으면 true, 그 외 false
-==          값이 같음     a==b      a값과 b값이 같으면 true, 그 외 false
-==          값이 같음     a==b      a값과 b값이 같으면 true, 그 외 false
+<          작음            a < b      a값이 b값보다 작으면 true, 그 외 false
+>          큼              a > b      a값과 b값보다 크면 true, 그 외 false
+<=         작거나 같음     a<=b      a값이 b값보다 작거나 같으면 true, 그 외 false
+>=         크거나 같음     a>=b      a값이 b값보다 크거나 같으면 true, 그 외 false
 
 
+	
+	1. 좌우 피연산자 타입이 같을 때 -> true ,false로 판정
+	ex)
+	var a = [1,2,3];
+	var b = [1,2,3];
 
+	console.log(a==b);  //false
+	//객체는 저장할때 그 본연의 데이터가 아닌 주소값을 저장한다.
+
+
+	2. 좌우 피연산자의 타입이 다를 때
+	- 같은 타입이 되도록 타입을 변환 후 다음 규칙에 따라 판별
+	
+	* undefined와 null은 같은 것으로 친다.
+	* 한쪽이 숫자 다른 한쪽이 문자열이면 문자열을 숫자로 변환해서 비교
+	* 둘 중 한쪽이 논리값이면 truesms 1, false는 0 으로 변환해서 비교
+	* 한쪽이 객체고 다른 한쪽이 숫자 또는 문자열이면 객체를 toString이나 valueOf 메서드를 사용해 원시타입으로 변환 후 비교
+	* 앞의 규칙에서 벗어나면 모두 '같지 않음' 으로 한다.
+	
+	console.log(null == undefined)  //true  스크립트에선 null과 undefined값이 일치한다.
+	console.log(new String ("aaaa")  == "aaaa")   //true
+	console.log(new String ("aaaa")  === "aaaa")   //false  타입까지 비교하면 객체==문자열 이기에 false
+
+
+2) 논리 연산자
+- 논리 연산자는 관계연산자를 사용하여 만든 논리식과 결합하여 더욱 복잡한 논리를 정의
+
+&&   논리곱   a && b    a와b가 모두 true면 true, 그 외에는 false
+||   논리합   a || b    a와 b중 하나라도 true면 true, 모두가 false면 false
+!    부정       !a      a가 true 면 false, false면 true
+
+
+ex) 
+var a = 10;
+var b = 5;
+var c = "";
+
+console.log(  c.length);  //0
+
+if(  a>0 || b>0  && c.length > 2){  //true
+	console.log("통과111");
+}
+
+if( c.length > 2 && ( a>0 || b>0 )) {  //false
+	console.log("통과222");  
+}
+
+* 피연산자의 평가
+0,-0,빈 문자열(""), NaN, null undefined  -> false
+0을 제외한 숫자, 빈문자열을 제외한 문자열, 모든 객체, 심벌 -> true
+
+
+* 논리곱 연산자와 논리합 연산자의 단락 평가
+a && b 
+a를 평가한 값이 false면 b의 값에 관계없이 표현식 자체가 false, b의 값을 평가하지 않는다.
+이때! && 연산자는 false대신에 a의 값 자체를 반환.
+또한 a의 값을 평가한 값이 true면 전체 표현식 값이 b의 값으로 결정
+true , false 대신에 값자체를 반환
+
+논리값이 필요한 장소에서는 논리값으로 타입이 변환되어 논리식 자체는 정상 동작!
+
+ex)
+var p = null;
+console.log(p && p.name);  // null  true false가 아닌 첫번째 비교했던 false값이 나온다.
+
+p ={name:"홍달링",age:7};
+console.log(p && p.name);  //홍달링  true이면 우측값이 나온다.
 
 
 
