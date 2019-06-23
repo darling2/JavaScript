@@ -427,7 +427,15 @@ String(26) -> "26"
 String([1,2,3])  -> "1,2,3"
 String(false)  -> "false"
 
-2) 수식안에서 묵시적 형변환
+2) Number함수 사용
+- 
+Number(123) ->123
+Number(false)  ->0
+Number(null) ->0
+Number([1,2,3])  -> NaN
+
+
+3) 수식안에서 묵시적 형변환
 
 - 숫자를 뜻하는 문자열 -> 숫자 타입
 	ex)
@@ -452,3 +460,13 @@ String(false)  -> "false"
 	</script>
 
 
+- 문자열을 해석(parse)해서 숫자로 바꾸는 함수
+	ex) parseInt 문자열을 정수로
+	parseInt("3.14")  //3
+	parseInt("abc")   //Nan
+	
+	ex) parseFloat 문자열을 소수점으로
+	parseFloat("3.14")  -> 3.14
+	parseFloat("3.14meters")  -> 3.14  숫자 뒤 문자열 무시 
+	
+	
