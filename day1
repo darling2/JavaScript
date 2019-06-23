@@ -542,4 +542,20 @@ ex) 버튼이 클릭 , 마우스에 html요소가 겹침, html요소 값이 변�
 		-> 가독성과, 유지보수성이 높아짐.
 
 
+		* 제거
+		window.onload =function(){
+			var button = document.getElementById("plus2");
+			button.onclick = null;  // null값을 대입해줌으로써 제거한다.
 
+		}
+
+
+		3. addEventListener 메서드 사용
+		var button2 = document.getElementById("plus3"); 
+		button2.addEventListener('click',function(){
+			var c= document.getElementById("ccc");
+			var num = + c.innerText  
+			c.innerHTML = num + 1 
+		});
+		
+		
