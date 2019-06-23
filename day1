@@ -470,3 +470,76 @@ Number([1,2,3])  -> NaN
 	parseFloat("3.14meters")  -> 3.14  숫자 뒤 문자열 무시 
 	
 	
+
+
+● console.time 콘솔 타이머
+
+console.time("answer_time");  //타이머 이름은 동일하게 설정.
+alert("확인 버튼");  //alert이 끝나는 시점까지 시간 체크
+console.timeEnd("answer_time")  //타이머 끝나는 시간 console로 출력
+
+
+
+● 이벤트 처리기 
+- 이벤트 주도형 프로그램
+-> 이벤트가 발생할 때까지 기다렸다가 이벤트가 발생했을 때 미리 등록해 둔 작업을 수행
+ex) 버튼이 클릭 , 마우스에 html요소가 겹침, html요소 값이 변경
+
+* 이벤트 처리기 등록 방법 3가지
+	1) HTML 요소의 속성으로 등록하는 방법
+	2) DOM요소의 프로퍼티로 등록하는 방법
+	3) addEventListener 메서드 사용하는 방법
+	
+	
+		1. html요소의 속성으로 등록  -> 페이지 http://darling2.cafe24.com//study/javascript/study/day1.html
+		<div id="aaa">123</div>
+		<button id="plus" onClick="add()">+</button>
+
+		<script type="text/javascript">
+		function add(){
+				var a= document.getElementById("aaa");
+
+				var num = + a.innerText  
+				a.innerHTML = num + 1 ; 
+		}
+		</script>
+		
+		- 위 소스는 이벤트 처리기를 onClick을 사용.
+		이 외에도 ondbclick , onmouseUp, onkeyUp,onresize ... 등 많이 있다.
+
+		* 단점
+		- html소스와 javascript소스가 뒤 섞일 수 있다.
+		
+		2. DOM에서 가져온 HTML 요소에 이벤트 처리기 지정하기
+		
+		<div id="bbb">123</div>
+		<button id="plus2" >+</button>
+		
+		function add2(){
+			var b= document.getElementById("bbb");
+			var num = + b.innerText  
+			b.innerHTML = num + 1 ; 
+		}
+		window.onload =function(){  //window.onload함수는 브라우저가 문서를 모두 읽은 후 실행
+			var button = document.getElementById("plus2");
+			button.onclick = add2;
+
+		}
+		
+		또는
+		window.onload =function(){
+			var button = document.getElementById("plus2");
+			button.onclick = function add2(){
+				var b= document.getElementById("bbb");
+				var num = + b.innerText  
+				b.innerHTML = num + 1 ; 
+			}
+		}
+
+
+
+		- DOM에서 이벤트를 처리하는 가장 큰 목적은 html과 script소스 분리하기 위함.
+		-> 가독성과, 유지보수성이 높아짐.
+
+
+
