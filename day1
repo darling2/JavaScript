@@ -558,4 +558,32 @@ ex) 버튼이 클릭 , 마우스에 html요소가 겹침, html요소 값이 변�
 			c.innerHTML = num + 1 
 		});
 		
+
+● 타이머  -> http://darling2.cafe24.com//study/javascript/study/day2.html
+setInterval(function(){
+	var circle = document.getElementById("circle");
+	circle.style.top = "170px";
+},1000);
+setInterval(function(){
+	var circle = document.getElementById("circle");
+	circle.style.top = "150px";
+},2000);
+
+
+● HTML 요소의 프로퍼티 읽고 쓰기
+- 체질량지수 계산하기  -> http://darling2.cafe24.com//study/javascript/study/day2.html
+getElementById,innerHTML
+
+window.onload = function (){
+	document.getElementById("button").onclick = function(){
+		var height = document.getElementById("height").value;
+		var height_m_conversion = height / 100;     //m로 변환 1.6m
+		var h = parseFloat(height_m_conversion);
+
+		var w= parseFloat(document.getElementById("weight").value);
+		var bmi = document.getElementById("bmi");
+		bmi.innerHTML = (w/(h*h)).toFixed(1);  //소수점 첫째짜리까지만 노출
+	}
+}
+
 		
