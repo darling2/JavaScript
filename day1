@@ -2,6 +2,20 @@
 -> 이름과 값을 한쌍으로 묶은 데이터를 여러 개 모은 것. (* 리터럴 : 프로그램에서 직접 작성할 수 있는 상수값)
 
 var card = {suit : "하트", rank : "A"}  // 객체 리터럴로 표현
+console.log("suit" in card);  //포함여부 true
+
+//객체타입의 값을 변수에 대입하면 메모리에서 위치 정보가 저장
+/*
+	위에 변수 card 주소가 164라면
+	a가 참조하고 있는 card객체의 주소도 164이다.
+	따라서 a값을 변경하면 그 주소에 해당하는 값도 같이 바뀐다.
+*/
+var a = card;
+a.suit="값이 변경되라";
+console.log(a);  //{suit: "값이 변경되라", rank: "A"}  
+console.log(card);  //{suit: "값이 변경되라", rank: "A"}
+		
+
 ex) 도미노 ajax넘겨줄 때
 var param = {
 		action_code : 'selectAD',
@@ -24,12 +38,35 @@ var param = {
 
 	값이 없는 리턴문으로 해석이 됩니다.!
 	
-호이스팅: 함수 선언문의 끌어올림
-함수 선언 전에 호출이 먼저 되었어도 호이스팅으로 인해 에러메세지 대신 출력이 된다.
-console.log(add(4,6));  //10
-function add(x,y){
-	return x+y;
-}
+	1) 호이스팅: 함수 선언문의 끌어올림
+	함수 선언 전에 호출이 먼저 되었어도 호이스팅으로 인해 에러메세지 대신 출력이 된다.
+	console.log(add(4,6));  //10
+	function add(x,y){
+		return x+y;
+	}
+
+	2) 값에 의한 호출
+	// a의 값이 복사 된다.
+	// x와 a는 다른 영역의 메모리에 위치한 별개의 변수 따라서 x의 값을 바꿔도 a값은 바뀌지 않는다.
+	function add1(x) {
+		return x= x+1;
+	}
+	var a = 3;
+	var b = add1(a);
+	console.log("a값"+a + " b값" + b);  //3,4
+	
+	
+	3) 참조에 의한 호출
+	
+	// 위에서 언급했듯이 주소값이 저장되어있어 변경이 된다.
+	function add1(p){
+		p.x = p.x+1;
+		p.y = p.y+1;
+		return p;
+	}
+	var a = {x:3,y:4};
+	var b = add1(a);
+	console.log(a,b);
 
 
 ● 템플릿 리터럴 (역따옴표)
@@ -42,6 +79,7 @@ function add(x,y){
 		var k = document.getElementsByTagName('input')[0];
 		var now = new Date();
 		k.value=`${now.getMonth()+1}월 ${now.getDate()}일`;  //`` 안쓰면 에러
+		//now객체의 getMonth메서드를 사용해 값을 가져온다.
 	</script>
 	
 	
@@ -102,17 +140,31 @@ ex )  var , let 선언자의 차이
 	var card = new aa("하트","A");  //aa생성자에 하트,A넣고 호출
 
 	console.log(card);  //aa {aa: "하트", bb: "A"}   -> aa객체
-		
+	
+		1) 정규표현식 객체 -> http://darling2.cafe24.com//study/javascript/study/study1.html
+		<input id="userId" type="text" />
+		<button onclick="idCheck()">submit</button>
+		function idCheck () {
+			var titleCheck = document.getElementById("userId").value;
+			var languageCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+			var option =new RegExp("[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]","g");
+
+			if (option.test(titleCheck)) {
+				 alert("ID에 한글이 포함되어 있습니다.");
+			    } else {
+				 alert("ID가 등록 되었습니다.");
+			}
+		    }
 		
 
-● Date 생성자
-var now = new Date();
-console.log(now); //Sat Jun 22 2019 14:00:30 GMT+0900 (한국 표준시)
+		2) Date 생성자
+		var now = new Date();
+		console.log(now); //Sat Jun 22 2019 14:00:30 GMT+0900 (한국 표준시)
 
-var now2 = new Date(2019,10,10);
-console.log(now2);  //Sun Nov 10 2019 00:00:00 GMT+0900 (한국 표준시)
-// Date의 내장함수 사용
-console.log(now2.getFullYear() +"/"+ now2.getMonth() +"/"+ now2.getDate()) //2019/10/10 
+		var now2 = new Date(2019,10,10);
+		console.log(now2);  //Sun Nov 10 2019 00:00:00 GMT+0900 (한국 표준시)
+		// Date의 내장함수 사용
+		console.log(now2.getFullYear() +"/"+ now2.getMonth() +"/"+ now2.getDate()) //2019/10/10 
 
 
 ● 배열
