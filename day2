@@ -64,6 +64,31 @@ console.log(map);  //Map(2) {"tom" => 123, "hey" => "1588-3082"}
 	
 
 
+5. Set 
+- Set 객체는 중복되지 않는 유일한 데이터를 수집하여 활용하기 위한 객체
+
+
+생성
+var set = new Set();
+console.log(set);
+
+초기데이터 지정해서 생성
+var zip = new Set(["123","안녕?"]);
+console.log(zip);  // Set(2) {"123", "안녕?"}
+
+* 제너레이터로 이터레이터 생성해서 위 코드와 동일 작업
+function* makeZip(){
+	yield "123";
+	yield "안녕?";
+
+}
+var zips = makeZip();
+zip = new Set(zips);
+console.log(zip);  //Set(2) {"123", "안녕?"}
+
+
+
+
 
 ------------------------------------------------------------------------------------------------------
 11장 
