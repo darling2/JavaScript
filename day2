@@ -86,7 +86,11 @@ var zips = makeZip();
 zip = new Set(zips);
 console.log(zip);  //Set(2) {"123", "안녕?"}
 
-
+* 기능
+	1) 중복제거
+	const foo = new Set([ 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 5 ]);
+	console.log(foo);
+	// Set { 1, 2, 3, 4, 5 }
 
 
 
