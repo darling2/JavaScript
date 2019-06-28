@@ -1,2 +1,38 @@
 11장 
 버그와 오류에 대처하는 방법
+
+1. Strict 모드 사용
+- 자바스크립트는 변수를 선언하지 않고 사용이 가능하다. 
+이렇게 선언한 변수는 전역변수로 취급하기에 에러가 발생하지 않음.
+하지만 Strict모드로 사용하면 언어의 사양을 엄격하게 제안.
+
+    ex)
+    에러 발생
+    function f(x){
+      "use strict";
+      y =x;  // Uncaught ReferenceError: y is not defined
+      console.log(y);
+    }
+
+    수정 안
+    function f(x){
+      "use strict";
+      var y;  //변수 선언 해준다.
+      y =x;  
+      console.log(y);
+    }
+
+    1) 첫머리에 입력하면 function 안에 function 중첩함수도 가능
+    2) <script></script>안에 한번 넣었으면 해당 스크립트만 적용
+    <script>
+    "use strict"; 
+    </script>
+
+    <script> //이 스크립트는 적용 불가
+    x=2;
+    </script>
+
+2. 스타일 가이드 활용
+- 여러 사람이 함께 프로그램 개발할때 스타일 가이드를 참고하여 코딩 규칙을 정해 두고 작업을 진행하는게 좋다.
+https://github.com/tipjs/javascript-style-guide
+
