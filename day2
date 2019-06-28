@@ -36,3 +36,133 @@
 - 여러 사람이 함께 프로그램 개발할때 스타일 가이드를 참고하여 코딩 규칙을 정해 두고 작업을 진행하는게 좋다.
 https://github.com/tipjs/javascript-style-guide
 
+3. console.trace();
+- 실행 중인 함수의 호출 스택을 볼 수 있다.
+: 실행 문맥은 스택구조로 관리. 데이터를 아래에서부터 쌓아올려서 마지막으로 추가한 데이터를 먼저 꺼내는 후입선출 방식으로 관리
+function foo() {  
+  function bar() {  
+    console.trace();  
+  }  
+  bar();  
+}  
+  
+foo();  
+
+-> 위 함수 스택 구조
+4.html:13 console.trace
+bar @ 4.html:13
+foo @ 4.html:16
+(anonymous) @ 4.html:20
+
+
+설명
+1) foo() 익명함수 가장먼저 호출 -> 스택 가장 바닥에 쌓임
+2) foo 함수 실행 -> 스택 2번째
+3) bar 함수 실행 -> 스택 3번째
+4) bar 함수 안에서 실행문장 -> 스택 4번째
+
+
+* 자바스크립트 호출 스택 이해하기
+https://new93helloworld.tistory.com/358
+
+4. 예외
+: 자바스크립트는 에러가 발생하면 강제 종료가 되는데, 꼭 모두 실행해야하는 프로그램이 있다면...?
+try, catch 문을 사용하면 종료되지 않고 프로그램이 끝까지 구동 될 수 있다.!!
+
+try { 
+/** * 정상이라면 이 코드는 아무런 문제없이 블록의 시작부터 끝까지 실행된다.
+* 하지만 경우에 따라 예외가 발생할 수 있다.
+* 예외는 throw 문에 의해 직접적으로 발생할 수도 있고,
+* 또는 예외를 발생시키는 메서드의 호출에 의해 발생할 수도 있다. */ 
+
+} catch (e) {
+/** * 이 블록 내부의 문장들은 오직 try 블록에서 예외가 발생할 경우에만 실행된다.
+* 이 문장들에선 지역 변수 e를 사용하여 Error 객체 또는 앞에서 던진 다른 값을 참조할 수 있다. 
+* 이 블록에서는 어떻게든 그 예외를 처리할 수도 있고,
+* 그냥 아무것도 하지 않고 예외를 무시할 수도 있고, 
+* 아니면 throw 를 사용해서 예외를 다시 발생시킬 수도 있다. 
+*/ 
+
+}finally { 
+/** * 이 블록에는 try 블록에서 일어난 일에 관계없이 무조건 실행될 코드가 위치한다.
+* 이 코드는 try 블록이 어떻게든 종료되면 실행된다.
+* try 블록이 종료되는 상황은 다음과 같다. 
+* 1) 정상적으로 블록의 끝에 도달했을 때 
+* 2) break, continue 또는 return 문에 의해서 
+* 3) 예외가 발생했지만 catch 절에서 처리했을 때
+* 4) 예외가 발생했고 그것이 잡히지 않은 채 퍼져나갈 때 */
+}
+
+    1) 예외의 전파
+    try
+    {
+        f();
+    }
+    catch (e)
+    {
+        console.log("예외를 캐치함  ->" + e);
+    }
+    function f() { g(); }
+    function g() { h(); }
+    function h() { throw new Error("오류가 발생했습니다."); }
+    
+    실행결과
+    예외를 캐치함  ->Error: 오류가 발생했습니다.
+    
+    순서 
+     a. try문 f()실행
+     b. 함수 f에서 g함수 실행
+     c. g함수에서 h함수 실행
+     d. h함수에서 에러 발생, throw한다 나를 불른 어미 한테.
+     e. g가 에러를 받는다.
+     f. f가 에러를 받는.
+     g. try 문에서 에러가 발생하니 catch문으로 간다.
+     h. 출력문 만남 문구 출력 "예외를 캐치함" 
+     i. throw받은 파라미터 e 출력  "오류가 발생했습니다."
+     
+
+
+5. 에러
+Error객체는 7가지 내장 객체가 있다.
+
+1) ReferenceError  //잘못된 참조를 만났을 때  발생하는 예외 객체
+    function f(x){
+      "use strict";
+      y =x;  // Uncaught ReferenceError: y is not defined
+      console.log(y);
+    }
+    => y가 변수 선언 되어있지 않음.
+    
+2) SyntaxError  //자바스크립트 문법에 어긋나는 구문을 만났을 때 발생하는 예외 객체
+    if( a > 0 ) {a ++ ;   //Uncaught SyntaxError: Unexpected end of input
+    중괄호 안 닫힘.
+    
+3) RangeError  => 숫자 값이 허용 범위를 벗어났을 때 발생하는 예외 객체
+    var check = function(num) {
+	MIN =20;
+	MAX =300;
+
+  if (num < MIN || num > MAX) {
+        throw new RangeError('Parameter must be between ' + MIN + ' and ' + MAX);
+      }
+    };
+
+    try {
+      check(210);
+      check(10);  // catch 에러 발생 Parameter must be between 20 and 300
+    }
+    catch (e) {
+      if (e instanceof RangeError) {
+        // Handle range error
+        console.log(e.message)
+      }
+    }
+    finally{
+        console.log("무조건 실행");
+    }
+    
+
+
+
+
+
