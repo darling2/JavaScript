@@ -123,8 +123,51 @@ console.log(n);
 	* 기본적인 사용 문법
 	var [a,b] = [3,4]
 	console.log(a,b);  //3 4
+	
+	/* 이 형식과 동일하다. */
 	var a = 3;
 	var b =4 ;
+	
+	ex)
+	1) 배열방식
+	const animalList = ["CAT", "DOG", "TIGER"];
+	const cat = animalList[0];
+	const dog = animalList[1];
+	const tiger = animalList[2];
+	console.log(cat); // CAT
+	console.log(dog); // DOG
+	console.log(tiger); // TIGER
+	/* 애니멀리스트라는 배열을 만들어 cat변수 안에 첫번째 값을 집어넣고 다시 꺼내오는 작업 방식. */
+	
+	=> ECMAScript6 version
+	const [cat, dog, tiger] = ["CAT", "DOG", "TIGER"];
+	console.log(cat); // CAT
+	console.log(dog); // DOG
+	console.log(tiger); // TIGER
+	
+	2)오브젝트 방식
+	const animals = {
+	  cat: "CAT",
+	  dog: "DOG",
+	  tiger: "TIGER"
+	};
+	const cat = animals.cat;
+	const dog = animals.dog;
+	const tiger = animals.tiger;
+	console.log(cat); // CAT
+	console.log(dog); // DOG
+	console.log(tiger); // TIGER
+	
+	=> ECMAScript6 version
+	const { cat, dog, tiger } = {
+	  cat: "CAT",
+	  dog: "DOG",
+	  tiger: "TIGER"
+	};
+	console.log(cat); // CAT
+	console.log(dog); // DOG
+	console.log(tiger); // TIGER
+
 
 
 
