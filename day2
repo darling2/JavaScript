@@ -12,6 +12,83 @@
 	1) forEach()  -> 배열의 요소를 callback을 사용하여 차례대로 처리
 	2) every()   -> 배열의 모든 요소가 callback조건에 부합하는지 판정.
 	
+	
+ex)
+//*shift
+var arr = ["망고","바나나","파인애플","오렌지"];
+arr.shift();
+console.log(arr);  //(3) ["바나나", "파인애플", "오렌지"]
+
+//* push
+arr.push("자두");
+console.log(arr);  //(4) ["바나나", "파인애플", "오렌지", "자두"]
+console.log(arr.sort());  //["바나나", "오렌지", "자두", "파인애플"]
+
+//*sort
+var int = [5,2,4,3,1];
+int.sort();
+console.log(int.sort());  //(5) [1, 2, 3, 4, 5]
+
+//* sort오류
+int =[10,11,9,15,21];
+console.log(int.sort());  //(5) [10, 11, 15, 21, 9]
+
+//* sort오름차순
+var k =int.sort(function(a,b){
+console.log("a값"+ a);
+console.log("b값"+ b);
+console.log("a-b값" , a-b);
+return a-b;
+});
+console.log(k);  //(5) [9, 10, 11, 15, 21]
+
+//* sort내림차순
+k=int.sort(function(a,b){
+return b-a;
+});
+console.log(k); //(5) [21, 15, 11, 10, 9]
+
+// *객체 
+var param = [
+{ name : "블랙앵거스", code : 21},
+{ name : "세븐치즈", code : 25},
+{ name : "포테이토", code : 13},
+{ name : "문어슈림프", code : 44}
+]
+
+var p = param.sort(function(a,b){
+console.log("a" + a.name);
+console.log("b" + b.name);
+return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+/*
+1. a.name < b.name 비교
+true 면 -1 false면  a.name > b.name ? 1 : 0
+2. 다음 조건 a.name > b.name 여기서 true면 1 false 0 
+*/
+
+});
+console.log(p);
+/*
+0: {name: "문어슈림프", code: 44}
+1: {name: "블랙앵거스", code: 21}
+2: {name: "세븐치즈", code: 25}
+3: {name: "포테이토", code: 13}
+*/
+
+/* code 오름차순 */
+var n = param.sort(function(a, b) { // 오름차순
+return a.code - b.code;
+});
+console.log(n);
+/*
+0: {name: "포테이토", code: 13}
+1: {name: "블랙앵거스", code: 21}
+2: {name: "세븐치즈", code: 25}
+3: {name: "문어슈림프", code: 44}
+*/
+	
+	
+	
 2. 다차원 배열
 
 	1) 2차원 배열 생성
