@@ -173,8 +173,10 @@ console.log(n);
 
 4. Map 객체의 생성
 
-var map = new Map([["tom", 123], ["hey","1588-3082"]]);
-console.log(map);  //Map(2) {"tom" => 123, "hey" => "1588-3082"}
+var map = new Map([["tom", 123], ["hey","1588-3082"]]);  //초기값 생성
+console.log(map);  //Map(2) {"tom" => 123, "hey" => "1588-3082"}
+console.log(map.get("tom"));  //123  
+
 
 	1) Map객체의 메서드
 	clear() -> Map객체 안에 모든 데이터를 삭제
