@@ -198,9 +198,12 @@ console.log(set);
 var zip = new Set(["123","안녕?"]);
 console.log(zip);  // Set(2) {"123", "안녕?"}
 
+제너레이터 :  반복 가능한 이터레이터가 값으로 반환된다.
+이터레이터 : for문 같은 반복 문
+
 * 제너레이터로 이터레이터 생성해서 위 코드와 동일 작업
-function* makeZip(){
-	yield "123";
+function* makeZip(){  
+	yield "123";  // yield 는 return문과 동일..
 	yield "안녕?";
 
 }
