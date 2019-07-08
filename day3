@@ -29,3 +29,30 @@ false : 버블링 단계 (생략했을 때의 기본값)
 1 => 받는 인수는 이벤트 객체
 2 => e.currentTarget 이벤트 객체안의 클릭한 요소를 참조하라는 객체.
 3=> useCapture 단계
+
+
+위 소스를 function 따로 빼서도 가능
+<script type="text/javascript">
+
+	window.onload  = function(){
+		var element = document.getElementById("box");
+		element.addEventListener("click",chcolor, false)
+	}
+	
+	function chcolor(e){
+		e.currentTarget.style.backgroundColor = "red";
+	}
+</script>
+
+
+2. removeEventListener
+window.onload  = function(){
+	var element = document.getElementById("box");
+	element.addEventListener("click",function(e){
+		console.log("hello!!!!");
+		element.removeEventListener("click" , arguments.callee, false );
+	}, false)
+}
+
+//이벤트 리스너 안에서 removeEventListener를 호출해서 스스로 삭제함.
+이때는 listener에 arguments.callee라는 값을 넘긴다.
