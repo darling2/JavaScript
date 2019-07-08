@@ -1,1 +1,31 @@
 
+* 이벤트 처리
+
+1. addEventListener 메서드로 이벤트 리스너 등록
+
+
+target.addEventListener(type,listener,useCapture);
+구성요소
+target : 이벤트 리스너를 등록할 DOM
+type : 이벤트 유형을 뜻하는 문자열( "click","mouseup" ...)
+listener : 이벤트가 발생했을 때 처리를 담당하는 콜백 함수의 참조
+useCapture : 이벤트 단계
+
+useCapture는 다음 값 중 하나가 될 수 있다.
+true : 캡처링 단계
+false : 버블링 단계 (생략했을 때의 기본값)
+
+<script type="text/javascript">
+
+	window.onload  = function(){
+		var element = document.getElementById("box");
+		element.addEventListener("click",function(e){  //1
+			e.currentTarget.style.backgroundColor = "red";   //2
+		}, false)  //3
+	}
+
+</script>
+
+1 => 받는 인수는 이벤트 객체
+2 => e.currentTarget 이벤트 객체안의 클릭한 요소를 참조하라는 객체.
+3=> useCapture 단계
