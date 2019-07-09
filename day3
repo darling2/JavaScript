@@ -56,3 +56,93 @@ window.onload  = function(){
 
 //이벤트 리스너 안에서 removeEventListener를 호출해서 스스로 삭제함.
 이때는 listener에 arguments.callee라는 값을 넘긴다.
+
+예제) http://darling2.cafe24.com/study/javascript/study/day4.html
+window.onload = function(){
+	var box = document.getElementById("box");
+	document.body.appendChild(box);
+
+	var boxOffsetX, boxOffsetY;
+
+	box.style.display = "inline-block";
+	box.style.position="absolute";
+	box.style.padding = "10px";
+	box.style.backgroundColor = "blue";
+	
+	//mousedown 리스너
+	box.addEventListener("mousedown" , function mouseDownListener(e){
+		document.addEventListener("mousemove" ,mouseMoveListener, false);
+		boxOffsetX = e.offsetX; boxOffsetY = e.offsetY;
+	},false);
+	
+	//mouseUp 리스너
+	box.addEventListener("mouseup" , function mouseUpListener(e){
+		document.removeEventListener("mousemove" ,mouseMoveListener, false);
+		boxOffsetX = e.offsetX; boxOffsetY = e.offsetY;
+	},false);
+
+	function mouseMoveListener(e){
+		box.style.left = e.pageX - boxOffsetX + "px";
+		box.style.top = e.pageY - boxOffsetY + "px";
+	}
+
+};
+
+
+예제 ) 키보드 이벤트 객체 -> http://darling2.cafe24.com/study/javascript/study/4.html
+
+
+3. 기본 동작 취소하기  preventDefault 메서드
+
+window.onload = function(){
+	var box = document.getElementById("box"); 
+	box.addEventListener("click",function(e){
+		if(confirm("페이지를 이동할래?"))  e.preventDefault();  //true일때 조건탐
+	},false)
+}
+	
+</script>
+
+<a id ="box" href ="https://www.naver.com">box</a>
+
+
+4. 이벤트 리스너 안의 this
+
+	1) 이벤트 리스너 안의 this
+	window.onload = function(){
+		function Person(name){
+			this.name = name;
+		}
+
+		Person.prototype.sayHello = function(){
+			console.log("Hello" + this.name);
+		}
+
+		var person = new Person("TOM");
+		var button = document.getElementById("box");
+		button.addEventListener("click",person.sayHello , false);
+	}
+
+	</script>
+
+	<a id ="box" name="홍">box</a>  
+	1. 클릭시   //Hello 홍
+	=> 이벤트 리스너안의 this는  이벤트가 발생한 요소 객체를 가리킴
+	=> a태그의 name값을 출력한 것
+
+	2)bind 메서드를 사용해 this를 특정 객체 가리키게 하기.
+	window.onload = function(){
+		function Person(name){
+			this.name = name;
+		}
+
+		Person.prototype.sayHello = function(){
+			console.log("Hello" + this.name);
+		}
+
+		var person = new Person("TOM");
+		var button = document.getElementById("box");
+		button.addEventListener("click",person.sayHello.bind(person) , false);
+		//this를 person을 가리켜준다.
+
+	}
