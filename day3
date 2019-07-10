@@ -224,12 +224,53 @@ resolve함수가 실행되면 then메서드에 등록한 함수가 호출 된다
 
 	
 	
+	_예) catch 문
+	var promise = new Promise(function(resolve,reject){
+		setTimeout(function(){
+			var n = parseInt(prompt("10 미만의 숫자를 입력하세요"));
+			if(n <= 10 ){
+				resolve(n);  //성공시 then문
+			}else{
+				reject(n)  //실패시 catch문
+			}
+		},1000)
+	});
+	promise.then(function(num){
+		console.log("num"+`${num}`);
+	})
+	.catch(function(n){
+		console.log("eeeeeeeeerror" + `${n}` );
+	});
+
+
 	
 	
+: 프로미스 콜백
+var promise = new Promise(function(resolve,reject){
+	setTimeout(function(){
+		var n = parseInt(prompt("10 미만의 숫자를 입력하세요"));
+		if(n <= 10 ){
+			resolve(n);  //성공시 then문
+		}else{
+			reject(n)  //실패시 catch문
+		}
+	},1000)
+});
+promise.then(function(num){
+	console.log("num1111"+`${num}`);
+	return num;  //값 전파 가능
+})
+.then(function(num){
+	console.log("num2222"+`${num}`);
+})
+.then(function(num){
+	console.log("num33333"+`${num}`);
+})
+.catch(function(n){
+	console.log("eeeeeeeeerror" + `${n}` );
+});
 	
-	
-	
-	
-	
-	
+//num11114
+//num22224
+//num33333undefined
 	
