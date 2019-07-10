@@ -146,3 +146,90 @@ window.onload = function(){
 		//this를 person을 가리켜준다.
 
 	}
+	
+5. 이벤트 리스너에 추가적인 정보를 넘기기
+	1) 이벤트 리스너에 이벤트 객체 외에 추가적인 정보 전달(익명함수)
+	window.onload = function(){
+		var box = document.getElementById("box");
+		box.addEventListener("click" , function (e){
+			changeColor(e,"red");  //여기서 추가적인 정보를 넘겨준다.
+		},false);
+
+		function changeColor(e,color){
+			e.currentTarget.style.backgroundColor=color;
+		}
+	}
+	2) 이벤트 리스너에 이벤트 객체 외에 추가적인 정보 전달
+	-위 익명함수에 비해 가독성이 높은 스크립트
+	window.onload = function(){
+		var box = document.getElementById("box");
+		box.addEventListener("click" , changeColor("red"),false); //함수를 리스너에 등록해줌으로써 가독성을 더욱 높여준다.
+
+		function changeColor(color){
+			return function(e){
+				e.currentTarget.style.backgroundColor = color;
+			}
+		}
+	}
+	
+6. 커스텀 이벤트
+
+	1) 이벤트 생성
+	var event = document.createEvent(type);
+	2) 초기화
+	event.initEvent(type,bubbles,cancelable);
+	type: 이벤트 유형 ("click","mouseup"....)
+	bubbles : 버블링할지를 나타내는 논리값
+	cancelable : 취소할 수 있는 이벤트로 만들지를 나타내는 논리값
+	3) 이벤트 실행( 내보내기)
+	target.dispatchEvent(event);
+	
+	-예시)
+	window.onload = function(){
+		var evt = document.createEvent("HTMLEvents"); //HTMLEvents 생성
+		evt.initEvent("click",true,false);  //HTMLEvents 초기화 작업
+		var box = document.getElementById("box");
+		box.addEventListener("click" , function (evt){
+			alert(`evt.cancelable: ${event.cancelable}` )  // cancelable 여부 초기화 시 false로 설정했기에  false가 뜸.
+		});
+
+		box.dispatchEvent(evt);  //dispatchEvent 메서드는 마우스 클릭이나 액션없이
+		//바로 실행이 된다. 
+	}
+	
+7. Promise
+: 비동기 처리를 실행하고 , 그 처리가 끝난 후에 다음 처리를 실행하기 위한 용도
+var promise = new Promise(function(resolve,reject){ ... });
+
+	1) resolve : 함수안의 처리가 끝났을 때 호출해야 하는 콜백 함수
+	2) reject : 함수안의 처리가 실패할 경우 호출하는 콜백함수
+	
+	_예)
+	var promise = new Promise(function(resolve,reject){
+		setTimeout(function(){
+			console.log("AAA");
+			resolve();
+		},1000)
+	});
+
+	promise.then(function(){
+		console.log("bbbb");
+	});
+	// AAA
+	// bbbb
+프로미스 객체 생성 후 실행함수 setTimeout 실행. 1초 뒤 콘솔 AAA찍고
+바로 resolve(); 호출 
+resolve함수가 실행되면 then메서드에 등록한 함수가 호출 된다.
+콘솔 bbbb출력.
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
