@@ -30,6 +30,22 @@ false : 버블링 단계 (생략했을 때의 기본값)
 2 => e.currentTarget 이벤트 객체안의 클릭한 요소를 참조하라는 객체.
 3=> useCapture 단계
 
+- 캡처링 - window 로부터 이벤트가 발생한 요소까지 이벤트를 전파한다.
+- 버블링 - 이벤트가 발생한 요소부터 window 까지 이벤트를 전파한다.
+
+-버블링 예제
+<form onclick="alert('form')">
+		FORM
+  <div onclick="alert('div')">
+  		DIV
+    <p onclick="alert('p')">P</p>
+
+  </div>
+</form>
+/*p태그를 클릭하면 최상단 form태그가 감싸고 있기에 버블링 되어 alert(p) -> alert(div) -> alert(form) 순으로 된다.
+*/
+
+
 
 위 소스를 function 따로 빼서도 가능
 <script type="text/javascript">
